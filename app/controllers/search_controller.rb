@@ -1,15 +1,18 @@
 class SearchController < ApplicationController
   def index
     search = params[:nation]
-
+    search_conversion = search.split('_').map {|x| x.capitalize}.join('+')
+    
     conn = Faraday.new('https://last-airbender-api.herokuapp.com')
-
-    response = conn.get("/api/v1/characters?affiliation=Fire+Nation&perPage=100")
+    
+    response = conn.get("/api/v1/characters?affiliation=#{search_conversion}&perPage=100")
+    require 'pry'; binding.pry
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    @members = json
+    @members = json.map do |member_data|
+      Member.new(member_data)
+    end
 
-    require 'pry'; binding.pry
   end
 end
