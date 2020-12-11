@@ -6,13 +6,11 @@ class SearchController < ApplicationController
     conn = Faraday.new('https://last-airbender-api.herokuapp.com')
     
     response = conn.get("/api/v1/characters?affiliation=#{search_conversion}&perPage=100")
-    require 'pry'; binding.pry
 
     json = JSON.parse(response.body, symbolize_names: true)
 
     @members = json.map do |member_data|
       Member.new(member_data)
     end
-
   end
 end
