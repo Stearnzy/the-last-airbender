@@ -2,10 +2,10 @@
 
 <% @members.each do |member| %>
   <ul class="member">
-    <li class="name">Name: <%= member[:name] %></li>
-    <li class="photo">Photo: <%= member[:photoUrl] %></li>
-    <li class="allies">Allies: <%= member[:allies] %></li>
-    <li class="enemies">Enemies: <%= member[:enemies] %></li>
-    <li class="affiliation">Affiliation: <%= member[:affiliation] %></li>
+    <li class="name">Name: <%= member.name %></li>
+    <li class="photo">Photo: <%= member.photo %></li>
+    <li class="allies">Allies: <%= member.allies %></li>
+    <li class="enemies">Enemies: <%= member.enemies %></li>
+    <li class="affiliation">Affiliation: <%= member.affiliation %></li>
   </ul>
 <% end %>
