@@ -1,0 +1,11 @@
+<h1><%= @members.count %> results found</h1>
+
+<% @members.each do |member| %>
+  <ul class="member">
+    <li class="name"><%= member[:name] %></li>
+    <li class="photo"><%= member[:photoUrl] %></li>
+    <li class="allies"><%= member[:allies] %></li>
+    <li class="enemies"><%= member[:enemies] %></li>
+    <li class="affiliation"><%= member[:affiliation] %></li>
+  </ul>
+<% end %>
